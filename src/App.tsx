@@ -4,6 +4,8 @@ import Layout from "./components/Layout";
 
 import "./App.css";
 
+require("dotenv").config();
+
 export interface AppProps {}
 
 export interface AppState {}
