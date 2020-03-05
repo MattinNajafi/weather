@@ -9,21 +9,24 @@ export interface LayoutProps {}
 
 export interface LayoutState {
   nameOfCity: string;
+  dataName: string;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
   constructor(props: LayoutProps) {
     super(props);
     this.state = {
-      nameOfCity: ""
+      nameOfCity: "",
+      dataName: ""
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    const API_CALL = await fetch(
+    let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
-    const data = await API_CALL.json();
+    let data = await API_CALL.json();
     console.log(data);
+    this.setState({ dataName: data.name + ", " + data.sys.country });
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,13 +35,13 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
 
   render() {
     return (
-      <div>
+      <div className="Layout">
         <Header />
         <Searchbar
           nameOfCity={this.handleChange}
           getWeather={this.getWeather}
         />
-        <Flexbox />
+        <Flexbox nameOfCity={this.state.dataName} />
       </div>
     );
   }
