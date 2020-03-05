@@ -1,7 +1,8 @@
 import * as React from "react";
 
 export interface Props {
-  nameOfCity: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  getWeather: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  nameOfCity: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface State {
@@ -11,15 +12,7 @@ export interface State {
 export default class Searchbar extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {
-      city: ""
-    };
   }
-
-  handleChangeOnSearchbar = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ city: event.target.value });
-    console.log(this.state.city);
-  };
 
   render() {
     return (
@@ -28,13 +21,12 @@ export default class Searchbar extends React.Component<Props, State> {
           className="searchbar"
           placeholder="Enter city here.."
           type="text"
-          defaultValue={this.state.city}
-          onChange={this.handleChangeOnSearchbar}
+          onChange={this.props.nameOfCity}
         />
         <i
           id="searchicon"
           className="fas fa-search"
-          onClick={this.props.nameOfCity}
+          onClick={this.props.getWeather}
         />
       </div>
     );
