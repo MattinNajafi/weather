@@ -4,6 +4,25 @@
     outline: none;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+/** LAYOUT **/
+
+.Layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/** HEADER **/
+
 .header-div {
     display: flex;
     justify-content: flex-start;
@@ -20,6 +39,8 @@
     margin-left: 0.5rem;
     height: 50px;
 }
+
+/** SEARCHBAR **/
 
 .searchbar-div {
     display: flex;
@@ -40,4 +61,14 @@
     margin-left: 0.3rem;
     margin-top: 5px;
     cursor: pointer;
+}
+
+/** FLEXBOX **/
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    border: 0.1px solid black;
+    width: 50%;
+    align-self: center;
 }
