@@ -9,7 +9,7 @@ export interface State {
   time: number;
 }
 
-let date = new Date();
+// let date = new Date();
 
 export default class City extends React.Component<Props, State> {
   constructor(props: Props) {

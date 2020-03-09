@@ -10,6 +10,7 @@ export interface LayoutProps {}
 export interface LayoutState {
   nameOfCity: string;
   dataName: string;
+  icon: string;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -17,16 +18,17 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     super(props);
     this.state = {
       nameOfCity: "",
-      dataName: ""
+      dataName: "",
+      icon: ""
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
-    let data = await API_CALL.json();
-    console.log(data);
-    this.setState({ dataName: data.name + ", " + data.sys.country });
+    let DATA = await API_CALL.json();
+    this.setState({ dataName: DATA.name + ", " + DATA.sys.country });
+    this.setState({ icon: DATA.weather[0].icon });
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
