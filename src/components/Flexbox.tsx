@@ -16,7 +16,7 @@ export default class Flexbox extends React.Component<Props, State> {
       <div className="flexbox">
         <City CityName={this.props.nameOfCity} />
         <ImageAndTemperature />
-        <Description />
+        <Description temperature={25} />
         <Week />
       </div>
     );
