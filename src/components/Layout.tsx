@@ -10,7 +10,7 @@ export interface LayoutProps {}
 export interface LayoutState {
   nameOfCity: string;
   dataName: string;
-  temperature: number;
+  temperature: any;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -19,7 +19,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.state = {
       nameOfCity: "",
       dataName: "",
-      temperature: null || 0
+      temperature: ""
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
