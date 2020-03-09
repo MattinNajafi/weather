@@ -10,6 +10,7 @@ export interface LayoutProps {}
 export interface LayoutState {
   nameOfCity: string;
   dataName: string;
+  temperature: number;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -17,7 +18,8 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     super(props);
     this.state = {
       nameOfCity: "",
-      dataName: ""
+      dataName: "",
+      temperature: null || 0
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -27,6 +29,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     let data = await API_CALL.json();
     console.log(data);
     this.setState({ dataName: data.name + ", " + data.sys.country });
+    this.setState({ temperature: data.main.temp - 272 });
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +44,10 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
           nameOfCity={this.handleChange}
           getWeather={this.getWeather}
         />
-        <Flexbox nameOfCity={this.state.dataName} />
+        <Flexbox
+          temperature={this.state.temperature}
+          nameOfCity={this.state.dataName}
+        />
       </div>
     );
   }

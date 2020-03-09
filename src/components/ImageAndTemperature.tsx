@@ -4,7 +4,7 @@ import ImageOfWeather from "./ImageOfWeather";
 
 export interface Props {
   temperature: number;
-  image: any;
+  // image: any;
 }
 
 export interface State {}
@@ -13,7 +13,7 @@ class ImageAndTemperature extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <Degrees temperature = {this.props.temperature}/>
+        <Degrees temperature={this.props.temperature} />
         <ImageOfWeather />
       </div>
     );
