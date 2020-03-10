@@ -11,6 +11,7 @@ export interface LayoutState {
   nameOfCity: string;
   dataName: string;
   temperature: any;
+  icon: string;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -19,7 +20,9 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.state = {
       nameOfCity: "",
       dataName: "",
-      temperature: ""
+      temperature: "",
+      icon: "",
+    
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -27,9 +30,12 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
     let data = await API_CALL.json();
+    
+
     console.log(data);
     this.setState({ dataName: data.name + ", " + data.sys.country });
     this.setState({ temperature: data.main.temp - 272 });
+    this.setState({icon: data.weather.icon});
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +53,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
         <Flexbox
           temperature={this.state.temperature}
           nameOfCity={this.state.dataName}
+          
         />
       </div>
     );

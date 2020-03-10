@@ -1,12 +1,17 @@
 import * as React from "react";
 
-export interface Props {}
+export interface Props {
+ 
+}
 
-export interface State {}
+export interface State {
+  icon: string;
+}
+
 
 class ImageOfWeather extends React.Component<Props, State> {
   render() {
-    return <div>ImageOfWeather</div>;
+    return <div>{this.state.icon}</div> ;
   }
 }
 
