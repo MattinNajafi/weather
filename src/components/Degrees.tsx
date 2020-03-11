@@ -1,12 +1,12 @@
 import * as React from "react";
 
-export interface Props {}
+export interface TemperatureProps {}
 
 export interface State {}
 
-class Degrees extends React.Component<Props, State> {
+class Degrees extends React.Component<TemperatureProps, State> {
   render() {
-    return <div>Degree</div>;
+    return <div>Degrees</div>;
   }
 }
 
