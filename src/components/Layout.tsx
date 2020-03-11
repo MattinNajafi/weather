@@ -37,7 +37,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     console.log(data);
     this.setState({ dataName: data.name + ", " + data.sys.country });
     this.setState({ temperature: data.main.temp - 272 });
-    this.setState({icon: data.weather.icon});
+    this.setState({icon: data.weather[0].icon});
 
   };
 
@@ -56,6 +56,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
         <Flexbox
           temperature={this.state.temperature}
           nameOfCity={this.state.dataName}
+          icon={this.state.icon}
           
         />
       </div>

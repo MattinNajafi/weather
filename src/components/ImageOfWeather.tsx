@@ -1,17 +1,18 @@
 import * as React from "react";
 
+
 export interface Props {
- 
+  icon: string; 
 }
 
 export interface State {
-  icon: string;
+   
 }
 
 
 class ImageOfWeather extends React.Component<Props, State> {
   render() {
-    return <div>{this.state.icon}</div> ;
+    return <img src={`http://openweathermap.org/img/w/${this.props.icon}.png`} alt="icon"/> ;
   }
 }
 
