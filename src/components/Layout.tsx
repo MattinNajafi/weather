@@ -29,6 +29,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     let DATA = await API_CALL.json();
     this.setState({ dataName: DATA.name + ", " + DATA.sys.country });
     this.setState({ icon: DATA.weather[0].icon });
+    console.log(DATA);
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

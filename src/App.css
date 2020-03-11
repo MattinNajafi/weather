@@ -73,3 +73,16 @@ html, body {
     width: 50%;
     align-self: center;
 }
+
+.header-flexbox h3, .header-flexbox h5 {
+    animation: displaying 2s;
+}
+
+@keyframes displaying {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
