@@ -23,12 +23,14 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       temperature: "",
       icon: "",
     
+
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
+
     let data = await API_CALL.json();
     
 
@@ -36,6 +38,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.setState({ dataName: data.name + ", " + data.sys.country });
     this.setState({ temperature: data.main.temp - 272 });
     this.setState({icon: data.weather.icon});
+
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
