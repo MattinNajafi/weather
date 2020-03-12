@@ -1,14 +1,10 @@
 import * as React from "react";
-import Week from "./Week";
-import { WeatherResponse } from "../apiTypings";
-// const API_ID: string = "c4a99f7da984ba9ec8a4964085bcd87e";
 
 export interface DayProps {
   key: string;
   day: string;
   nameOfCity: string;
   data: any;
-  // icon: any;
 }
 
 export interface DayState {

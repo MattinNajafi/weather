@@ -4,11 +4,7 @@ export interface Props {
   CityName: string;
 }
 
-export interface State {
-  isLoaded: boolean;
-}
-
-// let date = new Date();
+export interface State {}
 
 export default class City extends React.Component<Props, State> {
   dateBuilder = () => {
