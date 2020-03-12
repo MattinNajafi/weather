@@ -10,6 +10,7 @@ export interface LayoutProps {}
 export interface LayoutState {
   nameOfCity: string;
   dataName: string;
+  temperature: any;
   icon: string;
   api: string;
   ifClicked: boolean;
@@ -21,15 +22,21 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.state = {
       nameOfCity: "",
       dataName: "",
+
       icon: "",
       api: "",
       ifClicked: false
+
+      temperature: "",
+      icon: "",
+
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
+
     let DATA = await API_CALL.json();
 
     const apicall = await fetch(
@@ -40,6 +47,10 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.setState({ dataName: DATA.name + ", " + DATA.sys.country });
     this.setState({ icon: DATA.weather[0].icon });
     this.setState({ ifClicked: true });
+
+    this.setState({ temperature: data.main.temp - 272 });
+    this.setState({icon: data.weather[0].icon});
+
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +58,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
   };
 
   render() {
+
     if (this.state.ifClicked === false) {
       return (
         <div className="Layout">
@@ -66,10 +78,11 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
             nameOfCity={this.handleChange}
             getWeather={this.getWeather}
           />
-          <Flexbox data={this.state.api} nameOfCity={this.state.dataName} />
+          <Flexbox icon={this.state.icon} temperature={this.state.temperature} data={this.state.api} nameOfCity={this.state.dataName} />
         </div>
       );
     }
+
   }
 }
 
