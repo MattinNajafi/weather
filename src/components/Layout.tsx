@@ -11,6 +11,8 @@ export interface LayoutState {
   nameOfCity: string;
   dataName: string;
   icon: string;
+  api: string;
+  ifClicked: boolean;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -19,7 +21,9 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.state = {
       nameOfCity: "",
       dataName: "",
-      icon: ""
+      icon: "",
+      api: "",
+      ifClicked: false
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -27,9 +31,15 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
     let DATA = await API_CALL.json();
+
+    const apicall = await fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.nameOfCity}&appid=${API_KEY}`
+    );
+    const data = await apicall.json();
+    this.setState({ api: data });
     this.setState({ dataName: DATA.name + ", " + DATA.sys.country });
     this.setState({ icon: DATA.weather[0].icon });
-    console.log(DATA);
+    this.setState({ ifClicked: true });
   };
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,16 +47,29 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
   };
 
   render() {
-    return (
-      <div className="Layout">
-        <Header />
-        <Searchbar
-          nameOfCity={this.handleChange}
-          getWeather={this.getWeather}
-        />
-        <Flexbox nameOfCity={this.state.dataName} />
-      </div>
-    );
+    if (this.state.ifClicked === false) {
+      return (
+        <div className="Layout">
+          <Header />
+          <Searchbar
+            nameOfCity={this.handleChange}
+            getWeather={this.getWeather}
+          />
+        </div>
+      );
+    }
+    if (this.state.ifClicked === true) {
+      return (
+        <div className="Layout">
+          <Header />
+          <Searchbar
+            nameOfCity={this.handleChange}
+            getWeather={this.getWeather}
+          />
+          <Flexbox data={this.state.api} nameOfCity={this.state.dataName} />
+        </div>
+      );
+    }
   }
 }
 

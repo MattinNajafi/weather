@@ -6,6 +6,7 @@ import Week from "./Week";
 
 export interface Props {
   nameOfCity: string;
+  data: string;
 }
 
 export interface State {}
@@ -17,7 +18,7 @@ export default class Flexbox extends React.Component<Props, State> {
         <City CityName={this.props.nameOfCity} />
         <ImageAndTemperature />
         <Description nameOfCity={this.props.nameOfCity} />
-        <Week />
+        <Week data={this.props.data} nameOfCity={this.props.nameOfCity} />
       </div>
     );
   }

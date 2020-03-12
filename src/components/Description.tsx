@@ -7,14 +7,14 @@ export interface DescriptionProps {
 }
 
 export interface DescriptionState {
-  temperature: any;
+  temperature: number;
 }
 
 class Description extends React.Component<DescriptionProps, DescriptionState> {
   constructor(props: DescriptionProps) {
     super(props);
     this.state = {
-      temperature: ""
+      temperature: 0
     };
   }
   temperature = async () => {
