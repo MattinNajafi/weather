@@ -12,6 +12,8 @@ export interface LayoutState {
   dataName: string;
   temperature: any;
   icon: string;
+  api: string;
+  ifClicked: boolean;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -20,9 +22,13 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     this.state = {
       nameOfCity: "",
       dataName: "",
+
+      icon: "",
+      api: "",
+      ifClicked: false
+
       temperature: "",
       icon: "",
-    
 
     };
   }
@@ -31,11 +37,17 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
 
-    let data = await API_CALL.json();
-    
+    let DATA = await API_CALL.json();
 
-    console.log(data);
-    this.setState({ dataName: data.name + ", " + data.sys.country });
+    const apicall = await fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.nameOfCity}&appid=${API_KEY}`
+    );
+    const data = await apicall.json();
+    this.setState({ api: data });
+    this.setState({ dataName: DATA.name + ", " + DATA.sys.country });
+    this.setState({ icon: DATA.weather[0].icon });
+    this.setState({ ifClicked: true });
+
     this.setState({ temperature: data.main.temp - 272 });
     this.setState({icon: data.weather[0].icon});
 
@@ -46,21 +58,31 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
   };
 
   render() {
-    return (
-      <div className="Layout">
-        <Header />
-        <Searchbar
-          nameOfCity={this.handleChange}
-          getWeather={this.getWeather}
-        />
-        <Flexbox
-          temperature={this.state.temperature}
-          nameOfCity={this.state.dataName}
-          icon={this.state.icon}
-          
-        />
-      </div>
-    );
+
+    if (this.state.ifClicked === false) {
+      return (
+        <div className="Layout">
+          <Header />
+          <Searchbar
+            nameOfCity={this.handleChange}
+            getWeather={this.getWeather}
+          />
+        </div>
+      );
+    }
+    if (this.state.ifClicked === true) {
+      return (
+        <div className="Layout">
+          <Header />
+          <Searchbar
+            nameOfCity={this.handleChange}
+            getWeather={this.getWeather}
+          />
+          <Flexbox icon={this.state.icon} temperature={this.state.temperature} data={this.state.api} nameOfCity={this.state.dataName} />
+        </div>
+      );
+    }
+
   }
 }
 

@@ -86,3 +86,14 @@ html, body {
         opacity: 1;
     }
 }
+
+.weekly-schedule-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weekly-schedule-tempimg {
+    display: flex;
+    align-items: center;
+}
