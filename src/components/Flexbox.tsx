@@ -3,22 +3,20 @@ import City from "./City";
 import ImageAndTemperature from "./ImageAndTemperature";
 import Description from "./Description";
 import Week from "./Week";
-
-export interface Props {
-  nameOfCity: string;
-  data: string;
-  temperature: number;
-  icon: string;
-  forecast: Array<object>;
-}
+import { RouteComponentProps } from "react-router-dom";
 
 export interface State {}
 
-export default class Flexbox extends React.Component<Props, State> {
+export default class Flexbox extends React.Component<
+  RouteComponentProps,
+  State
+> {
   render() {
+    console.log(this.props.location.pathname.substring(1));
     return (
       <div className="flexbox">
-        <City CityName={this.props.nameOfCity} />
+        <h1></h1>
+        {/* <City CityName={this.props.nameOfCity} />
         <ImageAndTemperature
           icon={this.props.icon}
           temperature={this.props.temperature}
@@ -31,7 +29,7 @@ export default class Flexbox extends React.Component<Props, State> {
           forecast={this.props.forecast}
           data={this.props.data}
           nameOfCity={this.props.nameOfCity}
-        />
+        /> */}
       </div>
     );
   }
