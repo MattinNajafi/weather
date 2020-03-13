@@ -4,7 +4,7 @@ export interface DayProps {
   key: string;
   day: string;
   nameOfCity: string;
-  data: any;
+  forecast: any;
 }
 
 export interface DayState {
@@ -22,18 +22,18 @@ class Day extends React.Component<DayProps, DayState> {
   }
 
   renderTemperature = () => {
-    if (this.props.data === undefined) {
+    if (this.props.forecast === undefined) {
       return null;
     } else {
-      return Math.round(this.props.data.main.temp - 272);
+      return Math.round(this.props.forecast.main.temp - 272);
     }
   };
 
   renderIcon = () => {
-    if (this.props.data === undefined) {
+    if (this.props.forecast === undefined) {
       return null;
     } else {
-      return this.props.data.weather[0].icon;
+      return this.props.forecast.weather[0].icon;
     }
   };
 

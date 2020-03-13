@@ -14,6 +14,7 @@ export interface LayoutState {
   icon: string;
   api: string;
   ifClicked: boolean;
+  weatherForecast: [];
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -25,7 +26,8 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       icon: "",
       api: "",
       ifClicked: false,
-      temperature: ""
+      temperature: "",
+      weatherForecast: []
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -38,6 +40,15 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     );
     const data = await apicall.json();
     this.setState({ api: data });
+
+    // abort if no data
+    if (!data.list) return;
+
+    const weatherForecast = data.list.filter(
+      (element: any) =>
+        Number(element.dt_txt.split(" ")[1].split(":")[0]) === 15
+    );
+    this.setState({ weatherForecast });
     this.setState({ dataName: DATA.name + ", " + DATA.sys.country });
     this.setState({ icon: DATA.weather[0].icon });
     this.setState({ temperature: DATA.main.temp - 272 });
@@ -73,6 +84,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
             temperature={this.state.temperature}
             data={this.state.api}
             nameOfCity={this.state.dataName}
+            forecast={this.state.weatherForecast}
           />
         </div>
       );

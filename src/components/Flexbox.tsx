@@ -9,6 +9,7 @@ export interface Props {
   data: string;
   temperature: number;
   icon: string;
+  forecast: Array<object>;
 }
 
 export interface State {}
@@ -26,7 +27,11 @@ export default class Flexbox extends React.Component<Props, State> {
           temperature={this.props.temperature}
           nameOfCity={this.props.nameOfCity}
         />
-        <Week data={this.props.data} nameOfCity={this.props.nameOfCity} />
+        <Week
+          forecast={this.props.forecast}
+          data={this.props.data}
+          nameOfCity={this.props.nameOfCity}
+        />
       </div>
     );
   }

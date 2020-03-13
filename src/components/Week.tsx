@@ -6,6 +6,7 @@ const API_ID: string = "c4a99f7da984ba9ec8a4964085bcd87e";
 export interface Props {
   nameOfCity: string;
   data: any;
+  forecast: Array<object>;
 }
 
 export interface State {
@@ -20,13 +21,13 @@ class Week extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount() {
-    const weatherForecast = this.props.data.list.filter(
-      (element: any) =>
-        Number(element.dt_txt.split(" ")[1].split(":")[0]) === 15
-    );
-    this.setState({ weatherForecast });
-  }
+  // componentDidMount() {
+  //   const weatherForecast = this.props.data.list.filter(
+  //     (element: any) =>
+  //       Number(element.dt_txt.split(" ")[1].split(":")[0]) === 15
+  //   );
+  //   this.setState({ weatherForecast });
+  // }
 
   renderDays = () => {
     const d = new Date();
@@ -51,7 +52,7 @@ class Week extends React.Component<Props, State> {
           key={days[i % 7]}
           nameOfCity={this.props.nameOfCity}
           day={days[i % 7]}
-          data={this.state.weatherForecast[j]}
+          forecast={this.props.forecast[j]}
         />
       );
     }
