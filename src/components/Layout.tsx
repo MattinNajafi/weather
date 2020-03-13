@@ -2,6 +2,12 @@ import * as React from "react";
 import Header from "./Header";
 import Flexbox from "./Flexbox";
 import Searchbar from "./Searchbar";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  RouteComponentProps
+} from "react-router-dom";
 
 const API_KEY = "c4a99f7da984ba9ec8a4964085bcd87e";
 
@@ -63,11 +69,17 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     if (this.state.ifClicked === false) {
       return (
         <div className="Layout">
-          <Header />
-          <Searchbar
-            nameOfCity={this.handleChange}
-            getWeather={this.getWeather}
-          />
+          <BrowserRouter>
+            <Header />
+            <Searchbar
+              nameOfCity={this.handleChange}
+              getWeather={this.getWeather}
+            />
+
+            <Switch>
+              <Route path="/:city" component={Flexbox}></Route>
+            </Switch>
+          </BrowserRouter>
         </div>
       );
     }
@@ -79,13 +91,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
             nameOfCity={this.handleChange}
             getWeather={this.getWeather}
           />
-          <Flexbox
-            icon={this.state.icon}
-            temperature={this.state.temperature}
-            data={this.state.api}
-            nameOfCity={this.state.dataName}
-            forecast={this.state.weatherForecast}
-          />
+          {/*  */}
         </div>
       );
     }
