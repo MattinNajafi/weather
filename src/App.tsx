@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "./components/Layout";
 
-import "./App.css";
+import "./App.scss";
 
 require("dotenv").config();
 
