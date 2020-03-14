@@ -2,12 +2,7 @@ import * as React from "react";
 import Header from "./Header";
 import Flexbox from "./Flexbox";
 import Searchbar from "./Searchbar";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  RouteComponentProps
-} from "react-router-dom";
+import ErrorMessage from "./ErrorMessage";
 
 const API_KEY = "c4a99f7da984ba9ec8a4964085bcd87e";
 
@@ -18,9 +13,9 @@ export interface LayoutState {
   dataName: string;
   temperature: any;
   icon: string;
-  api: string;
+  errormessage: boolean;
   ifClicked: boolean;
-  weatherForecast: [];
+  weatherForecast: Array<object>;
 }
 
 class Layout extends React.Component<LayoutProps, LayoutState> {
@@ -30,13 +25,14 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       nameOfCity: "",
       dataName: "",
       icon: "",
-      api: "",
       ifClicked: false,
+      errormessage: false,
       temperature: "",
       weatherForecast: []
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    // LOOP THROUGH CITY JSON FILE, IF THIS STATE NAMEOFCITY != ANY CITY ( RETURN: <ERRORMESSAGE/>)
     let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
@@ -45,9 +41,6 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
     const data = await apicall.json();
-    this.setState({ api: data });
-
-    // abort if no data
     if (!data.list) return;
 
     const weatherForecast = data.list.filter(
@@ -69,17 +62,12 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     if (this.state.ifClicked === false) {
       return (
         <div className="Layout">
-          <BrowserRouter>
-            <Header />
-            <Searchbar
-              nameOfCity={this.handleChange}
-              getWeather={this.getWeather}
-            />
-
-            <Switch>
-              <Route path="/:city" component={Flexbox}></Route>
-            </Switch>
-          </BrowserRouter>
+          <Header />
+          <Searchbar
+            nameOfCity={this.handleChange}
+            getWeather={this.getWeather}
+            valueOfSearchbar={this.state.nameOfCity}
+          />
         </div>
       );
     }
@@ -90,8 +78,14 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
           <Searchbar
             nameOfCity={this.handleChange}
             getWeather={this.getWeather}
+            valueOfSearchbar={this.state.nameOfCity}
           />
-          {/*  */}
+          <Flexbox
+            icon={this.state.icon}
+            temperature={this.state.temperature}
+            forecast={this.state.weatherForecast}
+            nameOfCity={this.state.dataName}
+          />
         </div>
       );
     }
