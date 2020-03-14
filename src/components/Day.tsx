@@ -7,20 +7,9 @@ export interface DayProps {
   forecast: any;
 }
 
-export interface DayState {
-  icon: string;
-  temperature: number | null;
-}
+export interface DayState {}
 
 class Day extends React.Component<DayProps, DayState> {
-  constructor(props: DayProps) {
-    super(props);
-    this.state = {
-      icon: "",
-      temperature: null
-    };
-  }
-
   renderTemperature = () => {
     if (this.props.forecast === undefined) {
       return null;

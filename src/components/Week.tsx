@@ -5,30 +5,12 @@ const API_ID: string = "c4a99f7da984ba9ec8a4964085bcd87e";
 
 export interface Props {
   nameOfCity: string;
-  data: any;
   forecast: Array<object>;
 }
 
-export interface State {
-  weatherForecast: [];
-}
+export interface State {}
 
 class Week extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      weatherForecast: []
-    };
-  }
-
-  // componentDidMount() {
-  //   const weatherForecast = this.props.data.list.filter(
-  //     (element: any) =>
-  //       Number(element.dt_txt.split(" ")[1].split(":")[0]) === 15
-  //   );
-  //   this.setState({ weatherForecast });
-  // }
-
   renderDays = () => {
     const d = new Date();
 
@@ -45,7 +27,6 @@ class Week extends React.Component<Props, State> {
     let number = d.getDay() + 1;
     let sum = number + 5;
     let daysList: Array<JSX.Element> = [];
-    console.log(number);
     for (let i = number, j = 0; i < sum; i++, j++) {
       daysList.push(
         <Day

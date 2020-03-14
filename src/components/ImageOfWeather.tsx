@@ -4,16 +4,19 @@ export interface Props {
   icon: string;
 }
 
-export interface State {}
+export interface State {
+  src: string;
+}
 
 class ImageOfWeather extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      src: `http://openweathermap.org/img/w/${this.props.icon}.png`
+    };
+  }
   render() {
-    return (
-      <img
-        src={`http://openweathermap.org/img/w/${this.props.icon}.png`}
-        alt="icon"
-      />
-    );
+    return <img src={this.state.src} alt="icon" />;
   }
 }
 

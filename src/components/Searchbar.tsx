@@ -3,22 +3,12 @@ import * as React from "react";
 export interface Props {
   getWeather: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   nameOfCity: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  valueOfSearchbar: string;
 }
 
-export interface State {
-  input: any;
-}
+export interface State {}
 
 export default class Searchbar extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      input: React.createRef()
-    };
-  }
-  buttonClicked = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    this.props.getWeather(event);
-  };
   render() {
     return (
       <div className="searchbar-div">
@@ -26,7 +16,7 @@ export default class Searchbar extends React.Component<Props, State> {
           className="searchbar"
           placeholder="Enter city here.."
           type="text"
-          ref={this.state.input}
+          value={this.props.valueOfSearchbar}
           onChange={this.props.nameOfCity}
         />
         <i
