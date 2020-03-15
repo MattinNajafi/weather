@@ -1,99 +1,57 @@
-* {
-    padding: 0;
-    margin: 0;
-    outline: none;
+//variables
+
+$full:100%;
+$yellow:#FFFF66;
+$bk:#000;
+
+//mixins
+
+@mixin gen {  
+    display: grid;
+    grid-template-columns: 20px auto 20px;
+    grid-template-rows: 20px auto 20px;
+    background-color: $yellow;
+    height: 100vh;
+    
+    
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
-}
-
-#root {
-    height: 100%;
-}
-
-/** LAYOUT **/
-
-.Layout {
+@mixin grid {
+    grid-area: 2/2;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/** HEADER **/
-
-.header-div {
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: center;
+    
 }
 
-.header-div h2 {
-    margin-left: 0.5rem;
-    color: black;
-    font-weight: 500;
+
+
+
+//css
+html
+.Layout {
+    @include gen;
+    flex-direction: column;
+
+    
+
 }
 
-.header-div img {
-    margin-left: 0.5rem;
-    height: 50px;
-}
 
-/** SEARCHBAR **/
+.header-div{
+    @include grid;
+    flex-direction: column;
+    
+
+    img{
+
+        width: 180px;
+    }
+
+}
 
 .searchbar-div {
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
-    outline: none;
-    margin-bottom: 10 rem;
-}
+    @include grid;
+    flex-direction: row;
 
-.searchbar-div input {
-    border: none;
-    border-bottom: 2px solid grey;
-    padding: 5px 1rem 5px;
-    font-size: 1rem;
-}
-
-#searchicon {
-    color: grey;
-    margin-left: 0.3rem;
-    margin-top: 5px;
-    cursor: pointer;
-}
-
-/** FLEXBOX **/
-
-.flexbox {
-    display: flex;
-    flex-direction: column;
-    border: 0.1px solid black;
-    width: 50%;
-    align-self: center;
-}
-
-.header-flexbox h3, .header-flexbox h5 {
-    animation: displaying 2s;
-}
-
-@keyframes displaying {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.weekly-schedule-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.weekly-schedule-tempimg {
-    display: flex;
-    align-items: center;
 }
