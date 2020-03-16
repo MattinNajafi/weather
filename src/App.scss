@@ -19,6 +19,7 @@ $bk:#000;
 @mixin grid {
     grid-area: 2/2;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     
@@ -31,7 +32,10 @@ $bk:#000;
 html
 .Layout {
     @include gen;
+    display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     
 
@@ -51,7 +55,20 @@ html
 }
 
 .searchbar-div {
-    @include grid;
+    grid-area: 2/2;
+    display: flex; 
     flex-direction: row;
+    
+    
+   
+   
+    #searchicon{
+        
+        
+        
+    }
+    .searchbar{
+        
+    }
 
 }
