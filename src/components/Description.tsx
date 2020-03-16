@@ -31,7 +31,7 @@ class Description extends React.Component<DescriptionProps, DescriptionState> {
   };
   render() {
     if (this.props.temperature === undefined) return null;
-    return <div>{this.tempDescription()}</div>;
+    return <div className="description">{this.tempDescription()}</div>;
   }
 }
 

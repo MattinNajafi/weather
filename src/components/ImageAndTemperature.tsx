@@ -13,7 +13,7 @@ export interface State {}
 class ImageAndTemperature extends React.Component<Props, State> {
   render() {
     return (
-      <div>
+      <div className="Header-tempimg">
         <Degrees temperature={this.props.temperature} />
         <ImageOfWeather icon={this.props.icon}/>
       </div>

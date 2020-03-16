@@ -23,6 +23,7 @@ export default class Searchbar extends React.Component<Props, State> {
           id="searchicon"
           className="fas fa-search"
           onClick={this.props.getWeather}
+
         />
       </div>
     );
