@@ -8,8 +8,8 @@ export default class Header extends React.Component<Props, State> {
   render() {
     return (
       <div className="header-div">
-        <img src={window.location.origin + "/images/sun-logo.png"} alt="SUN" />
-        <h2>MM Weather</h2>
+        <img src={window.location.origin + "/images/umbrella-beach-light.svg"} alt="logo" />
+        <h2>M&M WEATHER</h2>
       </div>
     );
   }
