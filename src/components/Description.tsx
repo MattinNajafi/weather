@@ -17,7 +17,7 @@ class Description extends React.Component<DescriptionProps, DescriptionState> {
       if (this.props.temperature <= 15 && this.props.temperature >= 8) {
         return "Cozy weather";
       } else if (this.props.temperature <= 25 && this.props.temperature > 15) {
-        return "Lovely weather, enjoy the sun";
+        return "Lovely eather, enjoy the sun";
       } else if (this.props.temperature > 25) {
         return "Put on your speedo, Jacuzi Bob!";
       } else if (this.props.temperature < 8 && this.props.temperature >= 0) {
@@ -31,7 +31,7 @@ class Description extends React.Component<DescriptionProps, DescriptionState> {
   };
   render() {
     if (this.props.temperature === undefined) return null;
-    return <div className="description">{this.tempDescription()}</div>;
+    return <div className="description">"{this.tempDescription()}"</div>;
   }
 }
 
