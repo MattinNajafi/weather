@@ -8,7 +8,7 @@ export interface State {}
 
 class Degrees extends React.Component<TemperatureProps, State> {
   render() {
-    return <div>{Math.round(this.props.temperature)} °C</div>;
+    return <div className="Temp-flexbox">{Math.round(this.props.temperature)} °C</div>;
   }
 }
 

@@ -16,7 +16,7 @@ class ImageOfWeather extends React.Component<Props, State> {
     };
   }
   render() {
-    return <img src={this.state.src} alt="icon" />;
+    return <img className="Icon-flexbox" src={this.state.src} alt="icon" />;
   }
 }
 
