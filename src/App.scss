@@ -26,9 +26,9 @@ $breakpoint-tablet: 768px;
   justify-content: center;
 }
 @mixin outline {
-    color:$yellow;
-    text-shadow: #000 0px 0px 2px;
-    -webkit-font-smoothing: antialiased;
+  color: $yellow;
+  text-shadow: -0.55px 0 black, 0 0.55px black, 0.55px 0 black, 0 -0.55px black;
+  -webkit-font-smoothing: antialiased;
 }
 
 //css
@@ -45,10 +45,10 @@ html .Layout {
   flex-direction: column;
 
   img {
-    width: 265px;
+    width: 320px;
   }
   h2 {
-    font-size: 26pt;
+    font-size: 26px;
     margin-top: 15px;
   }
   @media (max-width: $breakpoint-tablet) {
@@ -56,34 +56,29 @@ html .Layout {
       width: 115px;
     }
     h2 {
-      font-size: 12pt;
+      font-size: 50pt;
     }
   }
 }
-.header-small{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 255px;
-    
-    
+.header-small {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 320px;
 }
-.headersmall-div{
-    
-    img {
-    width: 55px;}
+.headersmall-div {
+  img {
+    width: 55px;
+    margin-bottom: -4.6px;
   }
+}
 
 .searchbar-div {
   grid-area: 2/2;
-  width: 125px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-
- 
 
   // margin-top: -10px;
 
@@ -92,9 +87,8 @@ html .Layout {
   .searchbar {
     width: 120px;
     border: none;
-    border-bottom: 2px (solid) $bk;
+    border-bottom: 2.5px (solid) $bk;
     background-color: $yellow;
-
   }
 }
 
@@ -108,29 +102,39 @@ html .Layout {
   .header-flexbox {
     display: flex;
     flex-direction: row;
-    width: 265px;
+    width: 320px;
     justify-content: space-between;
+  }
+  .header-flexbox h3,
+  .header-flexbox h5 {
+    margin-bottom: 0;
+    text-transform: uppercase;
   }
 
   .Header-tempimg {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 265px;
-    margin-top: -20px;
+    width: 320px;
     margin-bottom: 0px;
     justify-content: space-between;
     .Temp-flexbox {
-        @include outline;
+      @include outline;
+      font-size: 2rem;
     }
+  }
+  .Icon-flexbox {
+    height: 4rem;
   }
 
   .description {
     display: flex;
     justify-content: center;
+    align-items: center;
     font-style: italic;
-    margin-bottom: 20px;
-    font-weight: 700;
+    margin: 10px 0px;
+    font-size: 1rem;
+    font-weight: 400;
   }
 
   // weekly forecast
@@ -138,7 +142,7 @@ html .Layout {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 265px;
+    width: 320px;
     justify-content: space-between;
 
     p {
@@ -146,8 +150,8 @@ html .Layout {
       font-size: smaller;
       font-weight: 900;
     }
-    span{
-        @include outline;
+    span {
+      @include outline;
     }
     .weekly-schedule-tempimg {
       display: flex;
