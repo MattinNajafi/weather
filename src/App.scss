@@ -39,6 +39,12 @@ html .Layout {
   justify-content: center;
   align-items: center;
 }
+.Layout-DIV {
+  @include gen;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
 .header-div {
   @include grid;
@@ -78,87 +84,89 @@ html .Layout {
   grid-area: 2/2;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 
   // margin-top: -10px;
 
   // #searchicon {}
 
   .searchbar {
-    width: 120px;
+    width: 260px;
     border: none;
     border-bottom: 2.5px (solid) $bk;
     background-color: $yellow;
   }
 }
 
+.Week-div {
+  width: 265px;
+}
+
 //Flexbox
 
+.header-flexbox {
+  display: flex;
+}
+.header-flexbox h3,
+.header-flexbox h5 {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 49%;
+}
+
+.Header-tempimg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 265px;
+  margin-bottom: 0px;
+  justify-content: space-between;
+  .Temp-flexbox {
+    @include outline;
+    font-size: 2rem;
+  }
+}
+.Icon-flexbox {
+  height: 4rem;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  margin: 10px 0px;
+  font-size: 1rem;
+  font-weight: 400;
+}
 .flexbox {
   grid-area: 2/2;
   display: flex;
   flex-direction: column;
 
-  .header-flexbox {
-    display: flex;
-    flex-direction: row;
-    width: 265px;
-    justify-content: space-between;
-  }
-  .header-flexbox h3,
-  .header-flexbox h5 {
-    margin-bottom: 0;
-    text-transform: uppercase;
-  }
-
-  .Header-tempimg {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 265px;
-    margin-bottom: 0px;
-    justify-content: space-between;
-    .Temp-flexbox {
-      @include outline;
-      font-size: 2rem;
-    }
-  }
-  .Icon-flexbox {
-    height: 4rem;
-  }
-
-  .description {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-style: italic;
-    margin: 10px 0px;
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
   // weekly forecast
-  .weekly-schedule-div {
+}
+.weekly-schedule-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 265px;
+  justify-content: space-between;
+
+  p {
+    text-transform: uppercase;
+    font-size: smaller;
+    font-weight: 900;
+  }
+  span {
+    @include outline;
+  }
+  .weekly-schedule-tempimg {
     display: flex;
     flex-direction: row;
+    width: 90px;
     align-items: center;
-    width: 265px;
     justify-content: space-between;
-
-    p {
-      text-transform: uppercase;
-      font-size: smaller;
-      font-weight: 900;
-    }
-    span {
-      @include outline;
-    }
-    .weekly-schedule-tempimg {
-      display: flex;
-      flex-direction: row;
-      width: 90px;
-      align-items: center;
-      justify-content: space-between;
-    }
   }
 }

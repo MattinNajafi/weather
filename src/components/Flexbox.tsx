@@ -15,7 +15,6 @@ export interface State {}
 
 export default class Flexbox extends React.Component<Props, State> {
   render() {
-    console.log(this.props.forecast);
     return (
       <div className="flexbox">
         <City CityName={this.props.nameOfCity} />
@@ -27,10 +26,10 @@ export default class Flexbox extends React.Component<Props, State> {
           temperature={this.props.temperature}
           nameOfCity={this.props.nameOfCity}
         />
-        <Week
+        {/* <Week
           forecast={this.props.forecast}
           nameOfCity={this.props.nameOfCity}
-        />
+        /> */}
       </div>
     );
   }

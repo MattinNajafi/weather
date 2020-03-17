@@ -44,7 +44,7 @@ class Week extends React.Component<Props, State> {
     if (this.props.nameOfCity === "") {
       return <React.Fragment></React.Fragment>;
     } else {
-      return <div>{this.renderDays()}</div>;
+      return <div className="Week-div">{this.renderDays()}</div>;
     }
   }
 }

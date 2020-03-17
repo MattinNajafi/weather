@@ -1,9 +1,19 @@
 import * as React from "react";
 import Header from "./Header";
-import Headersmall from "./Headersmall"
+import Headersmall from "./Headersmall";
 import Flexbox from "./Flexbox";
 import Searchbar from "./Searchbar";
+import Week from "./Week";
 import ErrorMessage from "./ErrorMessage";
+
+let height: number;
+let width: any;
+
+window.addEventListener("resize", function() {
+  height = window.innerHeight;
+  width = window.innerWidth;
+  console.log("height: " + height + " width: " + width);
+});
 
 const API_KEY = "c4a99f7da984ba9ec8a4964085bcd87e";
 
@@ -74,18 +84,22 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     }
     if (this.state.ifClicked === true) {
       return (
-        <div className="Layout">
-         <div className="header-small"> 
-          <Headersmall />
-          <Searchbar
-            nameOfCity={this.handleChange}
-            getWeather={this.getWeather}
-            valueOfSearchbar={this.state.nameOfCity}
-          />
+        <div className="Layout-DIV">
+          <div className="Header-searchbar-div">
+            <Header />
+            <Searchbar
+              nameOfCity={this.handleChange}
+              getWeather={this.getWeather}
+              valueOfSearchbar={this.state.nameOfCity}
+            />
+            <Flexbox
+              icon={this.state.icon}
+              temperature={this.state.temperature}
+              forecast={this.state.weatherForecast}
+              nameOfCity={this.state.dataName}
+            />
           </div>
-          <Flexbox
-            icon={this.state.icon}
-            temperature={this.state.temperature}
+          <Week
             forecast={this.state.weatherForecast}
             nameOfCity={this.state.dataName}
           />
