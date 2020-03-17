@@ -45,18 +45,18 @@ html .Layout {
   flex-direction: column;
 
   img {
-    width: 320px;
+    width: 265px;
   }
   h2 {
-    font-size: 26px;
+    font-size: 26pt;
     margin-top: 15px;
   }
   @media (max-width: $breakpoint-tablet) {
     img {
-      width: 115px;
+      width: 215px;
     }
     h2 {
-      font-size: 50pt;
+      font-size: 29pt;
     }
   }
 }
@@ -65,7 +65,7 @@ html .Layout {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  width: 320px;
+  width: 265px;
 }
 .headersmall-div {
   img {
@@ -102,7 +102,7 @@ html .Layout {
   .header-flexbox {
     display: flex;
     flex-direction: row;
-    width: 320px;
+    width: 265px;
     justify-content: space-between;
   }
   .header-flexbox h3,
@@ -115,7 +115,7 @@ html .Layout {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 320px;
+    width: 265px;
     margin-bottom: 0px;
     justify-content: space-between;
     .Temp-flexbox {
@@ -142,7 +142,7 @@ html .Layout {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 320px;
+    width: 265px;
     justify-content: space-between;
 
     p {
