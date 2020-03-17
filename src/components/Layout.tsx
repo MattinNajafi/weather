@@ -1,5 +1,6 @@
 import * as React from "react";
 import Header from "./Header";
+import Headersmall from "./Headersmall"
 import Flexbox from "./Flexbox";
 import Searchbar from "./Searchbar";
 import ErrorMessage from "./ErrorMessage";
@@ -31,8 +32,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       weatherForecast: []
     };
   }
-  handleSubmit = async () => {
-    // event?.preventDefault();
+  getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     // LOOP THROUGH CITY JSON FILE, IF THIS STATE NAMEOFCITY != ANY CITY ( RETURN: <ERRORMESSAGE/>)
     let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
@@ -66,7 +66,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
           <Header />
           <Searchbar
             nameOfCity={this.handleChange}
-            getWeather={this.handleSubmit}
+            getWeather={this.getWeather}
             valueOfSearchbar={this.state.nameOfCity}
           />
         </div>
@@ -75,12 +75,14 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     if (this.state.ifClicked === true) {
       return (
         <div className="Layout">
-          <Header />
+         <div className="header-small"> 
+          <Headersmall />
           <Searchbar
             nameOfCity={this.handleChange}
-            getWeather={this.handleSubmit}
+            getWeather={this.getWeather}
             valueOfSearchbar={this.state.nameOfCity}
           />
+          </div>
           <Flexbox
             icon={this.state.icon}
             temperature={this.state.temperature}

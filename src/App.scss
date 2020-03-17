@@ -25,6 +25,11 @@ $breakpoint-tablet: 768px;
   align-items: center;
   justify-content: center;
 }
+@mixin outline {
+    color:$yellow;
+    text-shadow: #000 0px 0px 2px;
+    -webkit-font-smoothing: antialiased;
+}
 
 //css
 html .Layout {
@@ -55,19 +60,41 @@ html .Layout {
     }
   }
 }
+.header-small{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 255px;
+    
+    
+}
+.headersmall-div{
+    
+    img {
+    width: 55px;}
+  }
 
 .searchbar-div {
   grid-area: 2/2;
-  width: 185px;
+  width: 125px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+
+ 
+
   // margin-top: -10px;
 
   // #searchicon {}
 
   .searchbar {
     width: 120px;
+    border: none;
+    border-bottom: 2px (solid) $bk;
+    background-color: $yellow;
+
   }
 }
 
@@ -93,6 +120,9 @@ html .Layout {
     margin-top: -20px;
     margin-bottom: 0px;
     justify-content: space-between;
+    .Temp-flexbox {
+        @include outline;
+    }
   }
 
   .description {
@@ -116,7 +146,9 @@ html .Layout {
       font-size: smaller;
       font-weight: 900;
     }
-
+    span{
+        @include outline;
+    }
     .weekly-schedule-tempimg {
       display: flex;
       flex-direction: row;
