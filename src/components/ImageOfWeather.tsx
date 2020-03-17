@@ -12,7 +12,7 @@ class ImageOfWeather extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      src: require(`../../public/images/${this.props.icon}.png`)
+      src: require(`../../public/images/${this.props.icon}.svg`)
     };
   }
   render() {
