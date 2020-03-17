@@ -3,7 +3,7 @@
 $full: 100%;
 $yellow: #ffff66;
 $bk: #000;
-$breakpoint-tablet: 768px;
+$breakpoint-tablet: 968px;
 
 //mixins
 
@@ -32,6 +32,13 @@ $breakpoint-tablet: 768px;
 }
 
 //css
+
+html,
+body,
+#root {
+  height: 100vh;
+}
+
 html .Layout {
   @include gen;
   display: flex;
@@ -40,16 +47,36 @@ html .Layout {
   align-items: center;
 }
 .Layout-DIV {
-  @include gen;
+  background-color: $yellow;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 100vh;
+  @media (max-width: 690px) {
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
-.header-div {
-  @include grid;
+.HeaderBig {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.HeaderBig img {
+  width: 265px;
+}
+
+.HeaderBig h2 {
+  font-size: 26px;
+  margin-top: 15px;
+}
+
+.header-div-medium {
+  display: flex;
+  flex-direction: column;
   img {
     width: 265px;
   }
@@ -63,6 +90,16 @@ html .Layout {
     }
     h2 {
       font-size: 29pt;
+    }
+  }
+  @media (max-width: 690px) {
+    height: auto;
+    img {
+      width: 55px;
+      margin-bottom: -0.5px;
+    }
+    h2 {
+      display: none;
     }
   }
 }
@@ -86,16 +123,10 @@ html .Layout {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  // margin-top: -10px;
-
-  // #searchicon {}
-
   .searchbar {
-    width: 260px;
-    border: none;
-    border-bottom: 2.5px (solid) $bk;
     background-color: $yellow;
+    border: none;
+    border-bottom: 2px solid black;
   }
 }
 
@@ -168,5 +199,14 @@ html .Layout {
     width: 90px;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+.header-searchbar-smalldiv {
+  @media (max-width: 690px) {
+    display: flex;
+    width: 265px;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 }

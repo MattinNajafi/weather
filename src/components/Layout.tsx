@@ -6,16 +6,15 @@ import Searchbar from "./Searchbar";
 import Week from "./Week";
 import ErrorMessage from "./ErrorMessage";
 
+const API_KEY = "c4a99f7da984ba9ec8a4964085bcd87e";
 let height: number;
 let width: any;
 
 window.addEventListener("resize", function() {
   height = window.innerHeight;
   width = window.innerWidth;
-  console.log("height: " + height + " width: " + width);
+  console.log(width);
 });
-
-const API_KEY = "c4a99f7da984ba9ec8a4964085bcd87e";
 
 export interface LayoutProps {}
 
@@ -73,7 +72,9 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     if (this.state.ifClicked === false) {
       return (
         <div className="Layout">
-          <Header />
+          <div className="HeaderBig">
+            <Header />
+          </div>
           <Searchbar
             nameOfCity={this.handleChange}
             getWeather={this.getWeather}
@@ -86,12 +87,16 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       return (
         <div className="Layout-DIV">
           <div className="Header-searchbar-div">
-            <Header />
-            <Searchbar
-              nameOfCity={this.handleChange}
-              getWeather={this.getWeather}
-              valueOfSearchbar={this.state.nameOfCity}
-            />
+            <div className="header-searchbar-smalldiv ">
+              <div className="header-div-medium">
+                <Header />
+              </div>
+              <Searchbar
+                nameOfCity={this.handleChange}
+                getWeather={this.getWeather}
+                valueOfSearchbar={this.state.nameOfCity}
+              />
+            </div>
             <Flexbox
               icon={this.state.icon}
               temperature={this.state.temperature}
