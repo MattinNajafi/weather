@@ -27,6 +27,7 @@ class Day extends React.Component<DayProps, DayState> {
   };
 
   render() {
+    let imgURL = require(`../../public/images/${this.props.forecast.weather[0].icon}.png`);
     if (this.props.day === "") {
       return <React.Fragment></React.Fragment>;
     } else {
@@ -35,10 +36,7 @@ class Day extends React.Component<DayProps, DayState> {
           <p>{this.props.day}</p>
           <div className="weekly-schedule-tempimg">
             <span>{this.renderTemperature()}</span>
-            <img
-              src={`http://openweathermap.org/img/w/${this.renderIcon()}.png`}
-              alt=""
-            />
+            <img src={imgURL} alt="" />
           </div>
         </div>
       );
