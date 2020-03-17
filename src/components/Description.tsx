@@ -7,25 +7,43 @@ export interface DescriptionProps {
   temperature: number | null;
 }
 
-export interface DescriptionState {}
+export interface DescriptionState {
+  coldest: string;
+  colder: string;
+  cold: string;
+  hot: string;
+  hotter: string;
+  hottest: string;
+}
 
 class Description extends React.Component<DescriptionProps, DescriptionState> {
+  constructor(props: DescriptionProps) {
+    super(props);
+    this.state = {
+      coldest: "Antarctis?",
+      colder: "Too cold to be in this country",
+      cold: "Its weather for Netflix n" + " Chill",
+      hot: "Cozy weather",
+      hotter: "Lovely weather, enjoy the sun",
+      hottest: "Put on your speedo, Jacuzi Bob!"
+    };
+  }
   tempDescription = () => {
     if (this.props.temperature === null) {
       return null;
     } else {
       if (this.props.temperature <= 15 && this.props.temperature >= 8) {
-        return "Cozy weather";
+        return this.state.hot;
       } else if (this.props.temperature <= 25 && this.props.temperature > 15) {
-        return "Lovely eather, enjoy the sun";
+        return this.state.hotter;
       } else if (this.props.temperature > 25) {
-        return "Put on your speedo, Jacuzi Bob!";
+        return this.state.hottest;
       } else if (this.props.temperature < 8 && this.props.temperature >= 0) {
-        return "Its weather for Netflix n' Chill";
+        return this.state.cold;
       } else if (this.props.temperature < 0 && this.props.temperature >= -10) {
-        return "Too cold to be in this country";
+        return this.state.colder;
       } else if (this.props.temperature < -10) {
-        return "Antarctis?";
+        return this.state.coldest;
       }
     }
   };

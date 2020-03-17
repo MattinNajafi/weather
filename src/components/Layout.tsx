@@ -31,7 +31,8 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
       weatherForecast: []
     };
   }
-  getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  handleSubmit = async () => {
+    // event?.preventDefault();
     // LOOP THROUGH CITY JSON FILE, IF THIS STATE NAMEOFCITY != ANY CITY ( RETURN: <ERRORMESSAGE/>)
     let API_CALL = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
@@ -65,7 +66,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
           <Header />
           <Searchbar
             nameOfCity={this.handleChange}
-            getWeather={this.getWeather}
+            getWeather={this.handleSubmit}
             valueOfSearchbar={this.state.nameOfCity}
           />
         </div>
@@ -77,7 +78,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
           <Header />
           <Searchbar
             nameOfCity={this.handleChange}
-            getWeather={this.getWeather}
+            getWeather={this.handleSubmit}
             valueOfSearchbar={this.state.nameOfCity}
           />
           <Flexbox
