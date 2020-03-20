@@ -1,4 +1,5 @@
 import * as React from "react";
+import logo from './logo.svg';
 
 export interface Props {}
 
@@ -9,7 +10,7 @@ export default class Header extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <img
-          src={window.location.origin + "/images/umbrella-beach-light.svg"}
+          src={logo}
           alt="logo"
         />
         <h2>M&M WEATHER</h2>
