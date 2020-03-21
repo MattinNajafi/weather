@@ -86,28 +86,31 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     if (this.state.ifClicked === true) {
       return (
         <div className="Layout-DIV">
-          <div className="Header-searchbar-div">
-            <div className="header-searchbar-smalldiv ">
-              <div className="header-div-medium">
-                <Header />
+          <div className="center-div">
+            <div className="Header-searchbar-div">
+              <div className="header-searchbar-smalldiv ">
+                <div className="header-div-medium">
+                  <Header />
+                </div>
+                <Searchbar
+                  nameOfCity={this.handleChange}
+                  getWeather={this.getWeather}
+                  valueOfSearchbar={this.state.nameOfCity}
+                />
               </div>
-              <Searchbar
-                nameOfCity={this.handleChange}
-                getWeather={this.getWeather}
-                valueOfSearchbar={this.state.nameOfCity}
+              <Flexbox
+                icon={this.state.icon}
+                temperature={this.state.temperature}
+                forecast={this.state.weatherForecast}
+                nameOfCity={this.state.dataName}
               />
             </div>
-            <Flexbox
-              icon={this.state.icon}
-              temperature={this.state.temperature}
+            
+            <Week
               forecast={this.state.weatherForecast}
               nameOfCity={this.state.dataName}
             />
           </div>
-          <Week
-            forecast={this.state.weatherForecast}
-            nameOfCity={this.state.dataName}
-          />
         </div>
       );
     }
