@@ -44,11 +44,11 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     // LOOP THROUGH CITY JSON FILE, IF THIS STATE NAMEOFCITY != ANY CITY ( RETURN: <ERRORMESSAGE/>)
     let API_CALL = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
     let DATA = await API_CALL.json();
     const apicall = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.nameOfCity}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
     const data = await apicall.json();
     if (!data.list) return;
@@ -105,7 +105,7 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
                 nameOfCity={this.state.dataName}
               />
             </div>
-            
+
             <Week
               forecast={this.state.weatherForecast}
               nameOfCity={this.state.dataName}
