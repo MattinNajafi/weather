@@ -42,7 +42,6 @@ class Layout extends React.Component<LayoutProps, LayoutState> {
     };
   }
   getWeather = async (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    // LOOP THROUGH CITY JSON FILE, IF THIS STATE NAMEOFCITY != ANY CITY ( RETURN: <ERRORMESSAGE/>)
     let API_CALL = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${this.state.nameOfCity}&appid=${API_KEY}`
     );
